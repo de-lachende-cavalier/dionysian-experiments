@@ -1,6 +1,15 @@
 import matplotlib.pyplot as plt
 
 
+from chain import MarkovChain1D
+
+
+def walk(n_steps, start_state, p, recurrent_states):
+    mc = MarkovChain1D(
+        n_steps, start_state, p, recurrent_states=recurrent_states)
+    return mc.walk()
+
+
 def plot_walks(walks, p):
     """Plots the various walks
 

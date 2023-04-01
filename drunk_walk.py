@@ -1,17 +1,12 @@
-from chain import MarkovChain1D
-from utils import plot_walks
-
-
-def drunk_walk(n_steps, start_state, p, recurrent_states):
-    mc = MarkovChain1D(n_steps, start_state, p, recurrent_states=recurrent_states)
-    return mc.walk()
-
+from utils import walk, plot_walks
 
 p = 1 / 3
 recurrent_states = {0, 300}  # the home is at state 300, the lake at step 0
 start_state = 100
 n_steps = 3000
 
-walks = [drunk_walk(n_steps, start_state, p, recurrent_states) for _ in range(100)]
+n_walks = 100
+drunk_walks = [walk(n_steps, start_state, p, recurrent_states)
+               for _ in range(n_walks)]
 
-plot_walks(walks, p)
+plot_walks(drunk_walks, p)
